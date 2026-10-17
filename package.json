@@ -1,6 +1,6 @@
 {
   "name": "cortico-world-qq-final-beta",
-  "version": "0.2.0-beta.10",
+  "version": "0.2.0-beta.12",
   "description": "Cortico World 扩展：QQ（OneBot v11 / NapCat）适配器。",
   "type": "module",
   "main": "./src/index.ts",
@@ -9,6 +9,7 @@
     "dist",
     "describe.json",
     "README.md",
+    "CHANGELOG.md",
     "ENV_PROMPT.md",
     "asr_sidecar.py",
     "LICENSE"
@@ -34,7 +35,12 @@
     "label": "QQ_bot",
     "webUiClient": "dist/console.js",
     "webUiStyle": "dist/console.css",
-    "describe": "describe.json"
+    "describe": "describe.json",
+    "tags": [
+      "im",
+      "qq",
+      "external-setup"
+    ]
   },
   "engines": {
     "node": ">=22"
