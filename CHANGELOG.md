@@ -4,6 +4,14 @@
 
 规则：每版本一个二级标题，标题里的第一个版本号即为本节版本。
 
+## 0.2.0-beta.14
+
+修正文档：0.3.0 引入了反向连接强制 Token，但图文教程仍写着「Token 留空」，会让人照着做却连不上。
+
+- `docs/guide.md`：第 2 步「设置反向客户端」补充说明 Token 要填桌宠生成的那串，并加了两个 Token 的对照表（正向那个 vs 反向这个）；第 13 步改为「Token 要填到 NapCat」，说明 Token 在「连接与监听」页面顶部、两边必须一致；检查清单新增一条；FAQ 重写「Token 弄丢怎么办」并新增「反向连不上怎么排查」。
+- `docs/index.html` 与单文件离线版同步上述修正。
+- README 要点速记同步（反向连接必须带 Token、监听地址保持 `127.0.0.1`）。
+
 ## 0.2.0-beta.13
 
 安全修复（认证评审 `Pal-AI-Lab/cortico-extensions#104` 要求）。**含行为变更，升级前请读**：
@@ -21,7 +29,7 @@
 - 补齐文档中漏写的 9 个工具：`qq_admin_kick`、`qq_alias_set/forget/list`、`qq_poke`、`qq_proactive_status/trigger`、`qq_sticker_stats`、`qq_view_image`。现README 覆盖全部 37 个工具。
 - 新增「与 cortico-world-memory 的关系」一节，说明笔记本是**可选增强而非依赖**（未装该插件时回退原生 JSONL，功能完整），并说明框架 `World` 契约没有 World 间发布/订阅通道，故采用最小能力协商而非事件流。
 
-## 0.2.0-beta.12
+## 0.2.12
 
 - 声明市场标签 `im` / `qq` / `external-setup`，便于在市场里按平台筛选（`external-setup` 表示需先装好 NapCat）。
 - `CHANGELOG.md` 加入 `files`，随包分发，市场可直接显示各版本更新说明。
