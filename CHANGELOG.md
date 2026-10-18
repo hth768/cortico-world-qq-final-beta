@@ -4,6 +4,14 @@
 
 规则：每版本一个二级标题，标题里的第一个版本号即为本节版本。
 
+## 0.2.0-beta.16
+
+修复 0.3.0 引入鉴权后 NapCat 完全连不上的问题（用户实测反馈）。
+
+- **反向服务端现在按 OneBot v11 标准校验 `Authorization: Bearer <token>` 请求头**。此前只从 query 读 `?access_token=` / `?token=`，而 NapCat / Lagrange 等实现默认把 token 放在 `Authorization` 头里（框架内置的 qq world 也是这么发的，见 `src/worlds/qq/driver.ts`），于是每一次接入都被判「Token 不匹配」——NapCat 反复重连、桌宠一直显示未连接，且日志看不出真正原因。
+- 仍然兼容 query 传参（`?access_token=` / `?token=`），因为反向监听地址是 NapCat 侧手填的，用法不统一。
+- 拒绝日志改为只记录 `presented: boolean`，不再回显实际 token 值。
+
 ## 0.2.0-beta.15
 
 修复 0.3.1 引入的两个问题（都是用户实际反馈的）：
@@ -13,7 +21,7 @@
 
 同时说明：token 只持久化到 `dataDir/reverse-token.txt`，`config.json` 里的 `token` 字段仍保持用户自填值（默认为空）。因为 `World` 契约不提供配置写入 API，扩展无法自行落盘；每次启动从该文件读回同一串，因此跨重启稳定。
 
-## 0.2.0-beta.14
+## 0.3.1
 
 修正文档：0.3.0 引入了反向连接强制 Token，但图文教程仍写着「Token 留空」，会让人照着做却连不上。
 
@@ -21,7 +29,7 @@
 - `docs/index.html` 与单文件离线版同步上述修正。
 - README 要点速记同步（反向连接必须带 Token、监听地址保持 `127.0.0.1`）。
 
-## 0.2.0-beta.13
+## 0.3.0
 
 安全修复（认证评审 `Pal-AI-Lab/cortico-extensions#104` 要求）。**含行为变更，升级前请读**：
 
@@ -38,7 +46,7 @@
 - 补齐文档中漏写的 9 个工具：`qq_admin_kick`、`qq_alias_set/forget/list`、`qq_poke`、`qq_proactive_status/trigger`、`qq_sticker_stats`、`qq_view_image`。现README 覆盖全部 37 个工具。
 - 新增「与 cortico-world-memory 的关系」一节，说明笔记本是**可选增强而非依赖**（未装该插件时回退原生 JSONL，功能完整），并说明框架 `World` 契约没有 World 间发布/订阅通道，故采用最小能力协商而非事件流。
 
-## 0.2.0-beta.12
+## 0.2.12
 
 - 声明市场标签 `im` / `qq` / `external-setup`，便于在市场里按平台筛选（`external-setup` 表示需先装好 NapCat）。
 - `CHANGELOG.md` 加入 `files`，随包分发，市场可直接显示各版本更新说明。
