@@ -21,7 +21,7 @@
 - `docs/index.html` 与单文件离线版同步上述修正。
 - README 要点速记同步（反向连接必须带 Token、监听地址保持 `127.0.0.1`）。
 
-## 0.3.0
+## 0.2.0-beta.13
 
 安全修复（认证评审 `Pal-AI-Lab/cortico-extensions#104` 要求）。**含行为变更，升级前请读**：
 
@@ -38,7 +38,7 @@
 - 补齐文档中漏写的 9 个工具：`qq_admin_kick`、`qq_alias_set/forget/list`、`qq_poke`、`qq_proactive_status/trigger`、`qq_sticker_stats`、`qq_view_image`。现README 覆盖全部 37 个工具。
 - 新增「与 cortico-world-memory 的关系」一节，说明笔记本是**可选增强而非依赖**（未装该插件时回退原生 JSONL，功能完整），并说明框架 `World` 契约没有 World 间发布/订阅通道，故采用最小能力协商而非事件流。
 
-## 0.2.12
+## 0.2.0-beta.12
 
 - 声明市场标签 `im` / `qq` / `external-setup`，便于在市场里按平台筛选（`external-setup` 表示需先装好 NapCat）。
 - `CHANGELOG.md` 加入 `files`，随包分发，市场可直接显示各版本更新说明。
